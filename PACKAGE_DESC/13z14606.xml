@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="packagedesc.xsd">
+	<name>13z014606</name>
+	<description>MDIS5 driver package for ARINC 429 IP CORE; MEN 16Z146 for receive and 16Z246 for transmit.</description>
+	<date>2015-07-21</date>
+	<revision>Release-1.0</revision>
+	<docroot>DRIVERS/MDIS_LL/Z146/DOC/html/index.html</docroot>
+	<!-- Global settings -->
+
+	<!-- Models -->
+	<modellist>
+		<model>
+			<!-- standard model -->
+			<hwname>16Z146</hwname>
+			<description>ARINC 429 Receiver</description>
+			<devnameprefix>ARINC_429_RX</devnameprefix>
+			<devtype>MDIS</devtype>
+			<autoid>
+				<chamv2id>146</chamv2id>
+			</autoid>
+			<bbslot>
+				<bbismodel>CHAMELEON</bbismodel>
+			</bbslot>
+			<bbslot>
+				<bbismodel>CHAMELEON_PCITBL</bbismodel>
+			</bbslot>
+			<swmodulelist>
+				<swmodule>
+					<name>ARINC429_RX</name>
+					<description>ARINC 429 Receive driver</description>
+					<type>Low Level Driver</type>
+					<makefilepath>Z146/DRIVER/COM/driver_rx.mak</makefilepath>
+				</swmodule>
+			</swmodulelist>
+		</model>
+		<model>
+			<!-- standard model -->
+			<hwname>16Z246</hwname>
+			<description>ARINC 429 Transmitter</description>
+			<devnameprefix>ARINC_429_TX</devnameprefix>
+			<devtype>MDIS</devtype>
+			<autoid>
+				<chamv2id>246</chamv2id>
+			</autoid>
+			<bbslot>
+				<bbismodel>CHAMELEON</bbismodel>
+			</bbslot>
+			<bbslot>
+				<bbismodel>CHAMELEON_PCITBL</bbismodel>
+			</bbslot>
+			<swmodulelist>
+				<swmodule>
+					<name>ARINC429_TX</name>
+					<description>ARINC 429 Transmit driver</description>
+					<type>Low Level Driver</type>
+					<makefilepath>Z146/DRIVER/COM/driver_tx.mak</makefilepath>
+				</swmodule>
+			</swmodulelist>
+		</model>
+		
+	</modellist>
+	<!-- Global software modules -->
+	<swmodulelist>
+		<swmodule>
+			<name>z146_example</name>
+			<description>Example program for ARINC 429 Receive driver</description>
+			<type>Driver Specific Tool</type>
+			<makefilepath>Z146/EXAMPLE/Z146_EXAMPLE/COM/program.mak</makefilepath>
+		</swmodule>
+	    <swmodule>
+			<name>z146_labels_test</name>
+			<description>Test program for label configuration</description>
+			<type>Driver Specific Tool</type>
+			<makefilepath>Z146/TOOLS/TESTS/LABEL_TEST/program.mak</makefilepath>
+		</swmodule>
+	    <swmodule>
+			<name>z146_12KHz_test</name>
+			<description>Test program for speed configuration</description>
+			<type>Driver Specific Tool</type>
+			<makefilepath>Z146/TOOLS/TESTS/12KHz_SPEED_TEST/program.mak</makefilepath>
+		</swmodule>
+	    <swmodule>
+			<name>z146_parity_test</name>
+			<description>Test program for speed configuration</description>
+			<type>Driver Specific Tool</type>
+			<makefilepath>Z146/TOOLS/TESTS/PARITY_TEST/program.mak</makefilepath>
+		</swmodule>
+	    <swmodule>
+			<name>z146_src_dst_id_test</name>
+			<description>Test program for Source destionation ID configuration</description>
+			<type>Driver Specific Tool</type>
+			<makefilepath>Z146/TOOLS/TESTS/SRC_DST_ID_TEST/program.mak</makefilepath>
+		</swmodule>		
+	    <swmodule>
+			<name>z146_interrupt_test</name>
+			<description>Test program for interrupt configuration</description>
+			<type>Driver Specific Tool</type>
+			<makefilepath>Z146/TOOLS/TESTS/INTERRUPT_TEST/program.mak</makefilepath>
+		</swmodule>	
+	    <swmodule>
+			<name>z146_msg_size_test</name>
+			<description>Test program for message size test</description>
+			<type>Driver Specific Tool</type>
+			<makefilepath>Z146/TOOLS/TESTS/MSG_SIZE_TEST/program.mak</makefilepath>
+		</swmodule>	
+	</swmodulelist>
+</package>
