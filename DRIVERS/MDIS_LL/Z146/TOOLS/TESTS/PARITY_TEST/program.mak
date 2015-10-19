@@ -11,7 +11,7 @@
 #   $Log: program.mak,v $
 #
 #-----------------------------------------------------------------------------
-#   (c) Copyright 2000 by MEN mikro elektronik GmbH, Nuernberg, Germany
+#   (c) Copyright 2016 by MEN mikro elektronik GmbH, Nuremberg, Germany
 #*****************************************************************************
 
 MAK_NAME=z146_parity_test
