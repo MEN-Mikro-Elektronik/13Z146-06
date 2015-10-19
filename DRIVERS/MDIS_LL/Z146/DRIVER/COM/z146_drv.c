@@ -3,8 +3,8 @@
  *        \file  z146_drv.c
  *
  *      \author  APatil
- *        $Date: 2009/08/03 16:43:18 $
- *    $Revision: 1.6 $
+ *        $Date: 2015/10/16 18:07:59 $
+ *    $Revision: 1.1 $
  *
  *      \brief   Low-level driver for ARINC429 receiver
  *
@@ -15,6 +15,9 @@
  /*-------------------------------[ History ]--------------------------------
  *
  * $Log: z146_drv.c,v $
+ * Revision 1.1  2015/10/16 18:07:59  ts
+ * Initial Revision
+ *
  *
  *---------------------------------------------------------------------------
  * (c) Copyright 2004 by MEN Mikro Elektronik GmbH, Nuernberg, Germany
@@ -934,7 +937,7 @@ static int32 Z146_BlockRead(
 			llRxLen = MREAD_D8(llHdl->ma, Z146_RX_RXC_REG_OFFSET);
 			IDBGWRT_1((DBH, ">>> LL - Z146_BlockrRead: RXC Data length = %d\n", llRxLen));
 
-			if(size >= llRxLen){
+			if(size >= (int32)llRxLen){
 				for(i=0; i<llRxLen; i++){
 					*userBuf++ = MREAD_D32(llHdl->ma, (Z146_RX_FIFO_START_ADDR + (i * 4)));
 					IDBGWRT_1((DBH, ">>> LL - Z146_BlockRead: Data[%d] = 0x%x\n",i, *userBuf));
@@ -953,7 +956,7 @@ static int32 Z146_BlockRead(
 			/* The interrupt is enabled therefore read from ring buffer. */
 		    if(dataLenWord != 0 ){
 		    	/* Check user buffer length */
-		    	if(size >= dataLenByte){
+		    	if(size >= (int32)dataLenByte){
 		    		/* Do not use the ringDataCnt because it can be influenced by IRQ during the data copy. */
 		    		for(i=0; i<dataLenWord; i++){
 		    			*userBuf++ = ReadFromBuffer(llHdl, &readRes);
@@ -1235,7 +1238,7 @@ static int32 Z146_Info(
  */
 static char* Ident(void)
 {
-	return ("Z146 - Z146 low level driver: $Id: z146_drv.c,v 1.11 2014/11/28 14:17:37 MRoth Exp $"
+	return ("Z146 - Z146 low level driver: $Id: z146_drv.c,v 1.1 2015/10/16 18:07:59 ts Exp $"
 			#ifdef Z146_MODEL_Z127
 				" Z127 model"
 			#else

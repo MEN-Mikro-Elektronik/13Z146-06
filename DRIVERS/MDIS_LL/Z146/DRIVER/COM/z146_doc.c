@@ -3,8 +3,8 @@
  *        \file  z17_doc.c
  *
  *      \author  ulrich.bogensperger@men.de
- *        $Date: 2009/07/10 13:37:24 $
- *    $Revision: 1.3 $
+ *        $Date: 2015/10/16 18:07:58 $
+ *    $Revision: 1.1 $
  *
  *      \brief   User documentation for MDIS5 Z17 driver
  *
@@ -14,7 +14,10 @@
  */
  /*-------------------------------[ History ]--------------------------------
  *
- * $Log: z17_doc.c,v $
+ * $Log: z146_doc.c,v $
+ * Revision 1.1  2015/10/16 18:07:58  ts
+ * Initial Revision
+ *
  * Revision 1.3  2009/07/10 13:37:24  CRuff
  * R: Porting to MDIS5
  * M: Changed description to MDIS5; added compatibility hint

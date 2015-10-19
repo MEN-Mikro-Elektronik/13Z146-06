@@ -3,8 +3,8 @@
  *        \file  z246_drv.h
  *
  *      \author  APatil
- *        $Date: 2009/08/03 16:43:29 $
- *    $Revision: 2.4 $
+ *        $Date: 2015/10/17 15:09:13 $
+ *    $Revision: 3.1 $
  *
  *       \brief  Header file for Z246 driver containing
  *               Z246 specific status codes and
@@ -15,7 +15,10 @@
  */
  /*-------------------------------[ History ]--------------------------------
  *
- * $Log: z17_drv.h,v $
+ * $Log: z246_drv.h,v $
+ * Revision 3.1  2015/10/17 15:09:13  ts
+ * Initial Revision
+ *
  *
  *---------------------------------------------------------------------------
  * (c) Copyright 2004 by MEN mikro elektronik GmbH, Nuernberg, Germany

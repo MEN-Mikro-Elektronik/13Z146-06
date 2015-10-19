@@ -19,9 +19,11 @@
 #   (c) Copyright 2000 by MEN mikro elektronik GmbH, Nuernberg, Germany
 #*****************************************************************************
 
-MAK_NAME=arinc429_tx
+MAK_NAME=arinc429_tx_sw
 
-MAK_SWITCH=$(SW_PREFIX)MAC_MEM_MAPPED
+MAK_SWITCH=$(SW_PREFIX)MAC_MEM_MAPPED \
+		   $(SW_PREFIX)MAC_BYTESWAP \
+		   $(SW_PREFIX)Z246_SW \
 
 MAK_LIBS=$(LIB_PREFIX)$(MEN_LIB_DIR)/desc$(LIB_SUFFIX)	\
          $(LIB_PREFIX)$(MEN_LIB_DIR)/oss$(LIB_SUFFIX)	\

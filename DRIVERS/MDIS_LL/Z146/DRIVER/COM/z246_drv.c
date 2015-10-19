@@ -3,8 +3,8 @@
  *        \file  z246_drv.c
  *
  *      \author  APatil
- *        $Date: 2009/08/03 16:43:18 $
- *    $Revision: 1.6 $
+ *        $Date: 2015/10/16 18:08:00 $
+ *    $Revision: 1.1 $
  *
  *      \brief   Low-level driver for ARINC429 transmitter
  *
@@ -15,6 +15,9 @@
 /*-------------------------------[ History ]--------------------------------
  *
  * $Log: z246_drv.c,v $
+ * Revision 1.1  2015/10/16 18:08:00  ts
+ * Initial Revision
+ *
  *
  *---------------------------------------------------------------------------
  * (c) Copyright 2004 by MEN Mikro Elektronik GmbH, Nuernberg, Germany
@@ -763,14 +766,14 @@ static int32 Z246_BlockWrite(
 		int32     *nbrWrBytesP
 )
 {
-	DBGWRT_1((DBH, " >>> LL - Z246_BlockWrite: size=%d\n",size));
-
 	int32 result = ERR_SUCCESS;
 	int8  ringResult = 0;
-	int32 i = 0;
+	u_int32 i = 0;
 	u_int32 gotsize = 0;
 	u_int32 llDataLen = size/4;
 	u_int32 * userBuf = (u_int32*)buf;
+
+	DBGWRT_1((DBH, " >>> LL - Z246_BlockWrite: size=%d\n",size));
 
 	/* Check for user buffer size */
 	if((size != 0) && (buf != NULL)){
@@ -984,7 +987,7 @@ static int32 Z246_Info(
  */
 static char* Ident(void)
 {
-	return ("Z246 - Z246 low level driver: $Id: z246_drv.c,v 1.11 2014/11/28 14:17:37 APatil Exp $"
+	return ("Z246 - Z246 low level driver: $Id: z246_drv.c,v 1.1 2015/10/16 18:08:00 ts Exp $"
 	);
 }
 
@@ -1084,7 +1087,7 @@ int HwWrite(LL_HANDLE    *llHdl){
 
 	DBGWRT_2((DBH, "LL - Z246_Write: txcStatus = %d\n", txcStatus));
 
-	if(llHdl->ringDataCnt > (Z246_TX_FIFO_MAX - txcStatus)){
+	if(llHdl->ringDataCnt > (u_int32)(Z246_TX_FIFO_MAX - txcStatus)){
 		/* If data length is greater than the queue space then transmit that much data only. */
 		dataCount = (Z246_TX_FIFO_MAX - txcStatus);
 	}else{
