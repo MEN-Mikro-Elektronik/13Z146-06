@@ -1,6 +1,6 @@
 #***************************  M a k e f i l e  *******************************
 #
-#         Author: ub
+#         Author: ap
 #          $Date: 2015/10/16 18:07:56 $
 #      $Revision: 1.1 $
 #
@@ -12,8 +12,6 @@
 #   Revision 1.1  2015/10/16 18:07:56  ts
 #   Initial Revision
 #
-#   Revision 1.1  2004/06/18 14:29:53  ub
-#   Initial Revision
 #
 #-----------------------------------------------------------------------------
 #   (c) Copyright 2000 by MEN mikro elektronik GmbH, Nuernberg, Germany

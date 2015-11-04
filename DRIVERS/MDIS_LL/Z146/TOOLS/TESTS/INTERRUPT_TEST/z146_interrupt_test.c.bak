@@ -185,7 +185,7 @@ int main(int argc, char *argv[])
 	printf("############# TESTING INTERRUPT (Disable) #############\n");
 	printf("############# Transmit ###############\n");
 	/* Disable interrupt */
-	result = M_setstat(rxPath, Z146_RX_RXC_IRQ_STAT, 0);
+	result = M_setstat(rxPath, 0, 0);
 	if(result != 0){
 		printf("RxSetStat failed with result %ld\n", result);
 		errors++;

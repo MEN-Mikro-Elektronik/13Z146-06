@@ -1,7 +1,7 @@
 #***************************  M a k e f i l e  *******************************
 #
 #         Author: ap
-#          $Date: 2015/07/22 14:30:02 $
+#          $Date: 2015/10/16 18:08:16 $
 #      $Revision: 1.1 $
 #
 #    Description: Makefile definitions for the Z146 example program
@@ -9,6 +9,9 @@
 #---------------------------------[ History ]---------------------------------
 #
 #   $Log: program.mak,v $
+#   Revision 1.1  2015/10/16 18:08:16  ts
+#   Initial Revision
+#
 #
 #-----------------------------------------------------------------------------
 #   (c) Copyright 2000 by MEN mikro elektronik GmbH, Nuernberg, Germany

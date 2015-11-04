@@ -98,8 +98,8 @@
 #define Z246_22_BIT_MASK			0x3FFFFF
 #define Z246_21_BIT_MASK			0x1FFFFF
 
-#define Z246_MAX_BUFF_SIZE			4097	/**< 4096 + 1 to avoid buffer overflow. */
-#define Z246_RING_SIZE_DEFAULT		0
+#define Z246_MAX_BUFF_SIZE			4096
+#define Z246_RING_SIZE_DEFAULT		0xFFFFFFFF
 /*-----------------------------------------+
 |  TYPEDEFS                                |
 +-----------------------------------------*/
@@ -777,7 +777,7 @@ static int32 Z246_BlockWrite(
 
 	/* Check for user buffer size */
 	if((size != 0) && (buf != NULL)){
-		if(llDataLen <= (Z246_MAX_BUFF_SIZE - 1)){
+		if(llDataLen <= Z246_MAX_BUFF_SIZE){
 			/* Copy data from user space to kernel space (ring buffer). */
 			for(i=0;i<llDataLen;i++){
 				ringResult = StoreInBuffer(llHdl, userBuf[i]);
@@ -1164,7 +1164,7 @@ u_int32 ReadFromBuffer( LL_HANDLE *llHdl, int8 * result){
 		*result = -1;
 	} else {
 		data = llHdl->ringBuffer[llHdl->ringTail];
-		llHdl->ringTail = (unsigned int)(llHdl->ringTail + 1);
+		llHdl->ringTail = (unsigned int)(llHdl->ringTail + 1) % Z246_MAX_BUFF_SIZE;
 		llHdl->ringDataCnt--;
 		if (llHdl->ringDataCnt == 0) {
 			llHdl->ringTail = Z246_RING_SIZE_DEFAULT;
@@ -1187,7 +1187,7 @@ u_int32 ReadFromBuffer( LL_HANDLE *llHdl, int8 * result){
 int8 StoreInBuffer( LL_HANDLE *llHdl , u_int32 data){
 
 	int8 result = 0;
-	unsigned int next = (unsigned int)(llHdl->ringHead + 1);
+	unsigned int next = (unsigned int)(llHdl->ringHead + 1) % Z246_MAX_BUFF_SIZE;
 	if (next != llHdl->ringTail)
 	{
 		llHdl->ringBuffer[llHdl->ringHead] = data;
