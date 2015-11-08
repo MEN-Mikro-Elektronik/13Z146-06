@@ -32,4 +32,3 @@ MAK_INP1=z146_interrupt_test$(INP_SUFFIX)
 MAK_INP=$(MAK_INP1)
  
  
- 
