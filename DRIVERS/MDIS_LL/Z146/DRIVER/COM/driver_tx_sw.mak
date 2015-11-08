@@ -48,4 +48,3 @@ MAK_INP1=z246_drv$(INP_SUFFIX)
 MAK_INP=$(MAK_INP1)
 
  
- 

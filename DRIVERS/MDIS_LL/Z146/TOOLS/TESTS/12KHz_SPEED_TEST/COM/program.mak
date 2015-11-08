@@ -31,4 +31,3 @@ MAK_INP1=z146_12KHz_test$(INP_SUFFIX)
 
 MAK_INP=$(MAK_INP1)
  
- 
