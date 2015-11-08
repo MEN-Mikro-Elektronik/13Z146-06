@@ -29,3 +29,4 @@ MAK_INP1=z146_example$(INP_SUFFIX)
 MAK_INP=$(MAK_INP1)
  
  
+ 
