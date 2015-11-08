@@ -320,3 +320,4 @@ static void __MAPILIB SignalHandler( u_int32 sig )
 		++G_sigCount;
 	}
 }
+ 
