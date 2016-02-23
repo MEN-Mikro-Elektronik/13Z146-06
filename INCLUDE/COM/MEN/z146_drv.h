@@ -47,7 +47,7 @@
 #define Z146_DIRECTION           M_DEV_OF+0x01    /**< G,S: Get/Set direction of all ports - 8bit - bit 0 for gpio[0] - value 0 is in - 1 is out  */
 #define Z146_SET_SIGNAL          M_DEV_OF+0x02    /**<   S: Set signal sent on IRQ  */
 #define Z146_CLR_SIGNAL          M_DEV_OF+0x03    /**<   S: Uninstall signal        */
-#define Z146_RX_DATA_LEN         M_DEV_OF+0x04    /**< G  : Get last IRQ request - 8bit - bit 0 for gpio[0] - value 1 is requested - clears the last request  */
+#define Z146_RX_DATA_LEN         M_DEV_OF+0x04    /**< G  : Get receive data length.  */
 #define Z146_RX_RXC_IRQ_STAT     M_DEV_OF+0x05    /**< G  : Get RXC IRQ status. */
 #define Z146_RX_RLS_IRQ_STAT     M_DEV_OF+0x06    /**< G  : Get RLS IRQ status. */
 #define Z146_RX_SPEED            M_DEV_OF+0x07    /**< G,S: Get/Set RX_LCR RX_SPEED. */
