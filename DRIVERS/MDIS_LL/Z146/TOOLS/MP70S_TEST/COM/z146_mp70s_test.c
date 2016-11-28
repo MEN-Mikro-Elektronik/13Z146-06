@@ -6,8 +6,8 @@
 /*!
  *         \file z146_mp70s_test.c
  *       \author zhou
- *        $Date: 2009/07/10 13:40:12 $
- *    $Revision: 1.5 $
+ *        $Date: 2016/11/28 15:55:17 $
+ *    $Revision: 1.2 $
  *
  *       \brief  Simple example program for the Z146 driver
  *
@@ -22,13 +22,15 @@
  */
 /*-------------------------------[ History ]--------------------------------
  *
- * $Log: z17_simp.c,v $
+ * $Log: z146_mp70s_test.c,v $
+ * Revision 1.2  2016/11/28 15:55:17  atlbitbucket
+ * Stash autocheckin
  *
  *---------------------------------------------------------------------------
  * (c) Copyright 2003 by MEN mikro elektronik GmbH, Nuernberg, Germany
  ****************************************************************************/
 
-static const char RCSid[]="$Id: z146_simp.c,v 1.5 2009/07/10 13:40:12 CRuff Exp $";
+static const char RCSid[]="$Id: z146_mp70s_test.c,v 1.2 2016/11/28 15:55:17 atlbitbucket Exp $";
 
 #include <stdio.h>
 #include <string.h>
@@ -85,7 +87,7 @@ int main(int argc, char *argv[])
 	int32 result = 0;
 	int i = 0;
 	u_int32 label = 1;
-	u_int32 dataLen = 0;
+	u_int32 n, dataLen = 0;
 	u_int32 txDataArray[4096];
 	u_int32 rxDataArray[4096];
 	printf("argc = %ld\n",argc );
@@ -159,14 +161,16 @@ int main(int argc, char *argv[])
 	/* install signal which will be received at change of input ports */
 	UOS_SigInit( SignalHandler );
 	UOS_SigInstall( UOS_SIG_USR1 );
-//	M_setstat(rxPath1, Z146_SET_SIGNAL, UOS_SIG_USR1);
 
+#ifdef USE_SIGNAL
+    M_setstat(rxPath1, Z146_SET_SIGNAL, UOS_SIG_USR1);
+#endif
 
 	printf("############# Transmit-1 ###############\n");
 	dataLen   = 4;
 	printf("User data length = %ld and dataptr = 0x%lx\n", dataLen *4, txDataArray);
-	for(i=0;i<dataLen;i++){
-		txDataArray[i] = i+ 7;
+	for(n=0;n<dataLen;n++){
+		txDataArray[n] = n + 7;
 		printf(" 0x%lx", txDataArray[i]);
 	}
 	printf("\n");
@@ -342,3 +346,4 @@ static char* bitString( char *s, u_int32 val, int nrBits )
 
 	return( s );
 }
+
