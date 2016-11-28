@@ -83,7 +83,7 @@
 #define Z146_RX_RLSIEN_MASK  		0x2  		/**< Mask of the receive line status interrupt enable bit. */
 
 #define Z146_RX_LCR_OFFSET			0x409		/**< Offset of the RX_LCR register */
-#define Z146_RX_LCR_DEFAULT			0x15		/**< Default value of the RX_LCR register */   // JUST FOR TEST ..:REMOVE...
+#define Z146_RX_LCR_DEFAULT			0x17		/**< Default value of the RX_LCR register */
 
 
 #define Z146_RX_SPEED_OFFSET		0x00		/**< Offset of the register RX_LCR RX_SPEED bit */
@@ -318,7 +318,7 @@ static int32 Z146_Init(
 
 	DBGWRT_1((DBH, "Z146_Init: base address = %08p\n", (void*)llHdl->ma));
 
-	// Initialize all elements in one shot
+	/* Initialize all elements in one shot */
 
 	/*------------------------------+
 	|  init hardware                |
@@ -1320,7 +1320,7 @@ ConfigureDefault( LL_HANDLE *llHdl )
     MWRITE_D8(llHdl->ma, Z146_RX_LA_NUM_OFFSET, (Z146_RX_LA_NUM_DEFAULT &  Z146_RX_LA_NUM_MASK));
 
     /* Clear the error register. */
-    MWRITE_D8(llHdl->ma, Z146_LSR_REG_OFFSET, 0xFF); // REMOVE
+    MWRITE_D8(llHdl->ma, Z146_LSR_REG_OFFSET, 0xFF);
 
     DBGWRT_1((DBH, " >>  LL - Z146_drv cfg after Init:"));
     RegStatus(llHdl);
