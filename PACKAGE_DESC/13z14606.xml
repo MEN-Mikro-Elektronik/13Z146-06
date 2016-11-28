@@ -100,11 +100,11 @@
 			<type>Driver Specific Tool</type>
 			<makefilepath>Z146/TOOLS/TESTS/MSG_SIZE_TEST/COM/program.mak</makefilepath>
 		</swmodule>	
-            <swmodule>
-                        <name>z146_mp70s_test</name>
-                        <description>Test program for ARINC on MP70S</description>
-                        <type>Driver Specific Tool</type>
-                        <makefilepath>Z146/TOOLS/MP70S_TEST/program.mak</makefilepath>
-                </swmodule>
+		<swmodule>
+			<name>z146_mp70s_test</name>
+			<description>Test program for ARINC on MP70S</description>
+			<type>Driver Specific Tool</type>
+			<makefilepath>Z146/TOOLS/MP70S_TEST/COM/program.mak</makefilepath>
+		</swmodule>
 	</swmodulelist>
 </package>
