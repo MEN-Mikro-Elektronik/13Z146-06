@@ -1,21 +1,15 @@
 /****************************************************************************
  ************                                                    ************
- ************                   Z146_EXAMPLE                     ************
+ ************                   Z146_PARITY_TEST                 ************
  ************                                                    ************
  ****************************************************************************/
 /*!
- *         \file z146_example.c
+ *         \file z146_parity_test.c
  *       \author Apatil
  *        $Date: 2015/10/16 18:09:19 $
  *    $Revision: 1.1 $
  *
- *       \brief  Simple example program for the Z146 driver
- *
- *               Reads and writes some values from/to GPIO ports,
- *               generating interrupts.
- *               Interrupts will be generated only on inputs. Thatsway
- *               normaly an external loopback from the outputs gpio[0]..[4]
- *               to gpio[5]..[7] is required.
+ *       \brief  Z146 test tool for parity
  *
  *     Required: libraries: mdis_api, usr_oss
  *     \switches (none)
@@ -26,12 +20,9 @@
  * Revision 1.1  2015/10/16 18:09:19  ts
  * Initial Revision
  *
- *
  *---------------------------------------------------------------------------
  * (c) Copyright 2003 by MEN mikro elektronik GmbH, Nuernberg, Germany
  ****************************************************************************/
-
-static const char RCSid[]="$Id: z146_parity_test.c,v 1.1 2015/10/16 18:09:19 ts Exp $";
 
 #include <stdio.h>
 #include <string.h>
@@ -42,30 +33,9 @@ static const char RCSid[]="$Id: z146_parity_test.c,v 1.1 2015/10/16 18:09:19 ts 
 #include <MEN/z246_drv.h>
 
 /*--------------------------------------+
-|   DEFINES                             |
-+--------------------------------------*/
-/* none */
-
-/*--------------------------------------+
-|   TYPDEFS                             |
-+--------------------------------------*/
-/* none */
-
-/*--------------------------------------+
-|   EXTERNALS                           |
-+--------------------------------------*/
-/* none */
-
-/*--------------------------------------+
-|   GLOBALS                             |
-+--------------------------------------*/
-static int G_sigCount = 0;
-
-/*--------------------------------------+
 |   PROTOTYPES                          |
 +--------------------------------------*/
 static void PrintError(char *info);
-static void __MAPILIB SignalHandler( u_int32 sig );
 
 /********************************* main ************************************/
 /** Program main function
@@ -90,21 +60,18 @@ int main(int argc, char *argv[])
 	int32 rxParity = 0;
 	u_int32 txDataArray[4096];
 	u_int32 rxDataArray[4096];
-	printf("argc = %ld\n",argc );
+
 	if (argc < 2 || strcmp(argv[1],"-?")==0) {
-		printf("Syntax: z146_parity_test <rx_rxDevice> <txDevice> >\n");
-		printf("Function: Test program for 12KHz speed configuration test.\n");
+		printf("Syntax: z146_parity_test <rxDevice> <txDevice>\n");
+		printf("Function: Z146 test tool for parity.\n");
 		printf("\n");
-		printf("%s \n",RCSid );
 		return(1);
 	}
-
-	printf("%s \n",RCSid );
 
 	rxDevice = argv[1];
 	txDevice = argv[2];
 	/*--------------------+
-    |  open rxPath          |
+    |  open rxPath        |
     +--------------------*/
 	if ((rxPath = M_open(rxDevice)) < 0) {
 		PrintError("open");
@@ -118,11 +85,6 @@ int main(int argc, char *argv[])
 	/*--------------------+
     |  config             |
     +--------------------*/
-	/* install signal which will be received at change of input ports */
-	UOS_SigInit( SignalHandler );
-	UOS_SigInstall( UOS_SIG_USR1 );
-//	M_setstat(rxPath, Z146_SET_SIGNAL, UOS_SIG_USR1);
-
 	result = M_setstat(txPath, Z246_TX_LABEL, label);
 	if(result != 0){
 		printf("TxSetStat failed with result %ld\n", result);
@@ -198,7 +160,8 @@ int main(int argc, char *argv[])
 		for(i=0;i<result/4;i++){
 			printf(" 0x%lx", rxDataArray[i]);
 			if(txDataArray[i] != ((rxDataArray[i] >> 8) & 0x7FFFFF)){
-				printf("\nExpected txDataArray[%d] = 0x%lx but received rxDataArray[%d] = 0x%lx\n",i, txDataArray[i], i, ((rxDataArray[i] >> 8) & 0x7FFFFF));
+				printf("\nExpected txDataArray[%d] = 0x%lx but received rxDataArray[%d] = 0x%lx\n",
+					i, txDataArray[i], i, ((rxDataArray[i] >> 8) & 0x7FFFFF));
 				errors++;
 			}
 			if((rxDataArray[i] & 0x80000000) == 0x80000000){
@@ -279,7 +242,8 @@ int main(int argc, char *argv[])
 		for(i=0;i<result/4;i++){
 			printf(" 0x%lx", rxDataArray[i]);
 			if(txDataArray[i] != ((rxDataArray[i] >> 8) & 0x7FFFFF)){
-				printf("\nExpected txDataArray[%d] = 0x%lx but received rxDataArray[%d] = 0x%lx\n",i, txDataArray[i], i, ((rxDataArray[i] >> 8) & 0x7FFFFF));
+				printf("\nExpected txDataArray[%d] = 0x%lx but received rxDataArray[%d] = 0x%lx\n",
+					i, txDataArray[i], i, ((rxDataArray[i] >> 8) & 0x7FFFFF));
 				errors++;
 			}
 		}
@@ -322,17 +286,3 @@ static void PrintError(char *info)
 {
 	printf("*** can't %s: %s\n", info, M_errstring(UOS_ErrnoGet()));
 }
-
-/**********************************************************************/
-/** Signal handler
- *
- *  \param  sig    \IN   received signal
- */
-static void __MAPILIB SignalHandler( u_int32 sig )
-{
-	if( sig == UOS_SIG_USR1 ) {
-		++G_sigCount;
-	}
-}
- 
- 

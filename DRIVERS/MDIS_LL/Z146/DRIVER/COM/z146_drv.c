@@ -3,8 +3,8 @@
  *        \file  z146_drv.c
  *
  *      \author  APatil
- *        $Date: 2015/10/16 18:07:59 $
- *    $Revision: 1.1 $
+ *        $Date: 2016/11/28 12:59:21 $
+ *    $Revision: 1.3 $
  *
  *      \brief   Low-level driver for ARINC429 receiver
  *
@@ -15,6 +15,9 @@
  /*-------------------------------[ History ]--------------------------------
  *
  * $Log: z146_drv.c,v $
+ * Revision 1.3  2016/11/28 12:59:21  atlbitbucket
+ * Stash autocheckin
+ *
  * Revision 1.1  2015/10/16 18:07:59  ts
  * Initial Revision
  *
@@ -410,12 +413,12 @@ static int32 Z146_Write(
 /****************************** Z146_SetStat *********************************/
 /** Set the driver status
  *
- *  The driver supports \ref getstat_setstat_codes "these status codes"
+ *  The driver supports \ref rx_getstat_setstat_codes "these status codes"
  *  in addition to the standard codes (see mdis_api.h).
  *  Note: only inputs are able fire an interrupt
  *
  *  \param llHdl         \IN  low-level handle
- *  \param code          \IN  \ref getstat_setstat_codes "status code"
+ *  \param code          \IN  \ref rx_getstat_setstat_codes "status code"
  *  \param ch            \IN  current channel
  *  \param value32_or_64 \IN  data or pointer to block data structure
  *                            (M_SG_BLOCK) for block status codes
@@ -722,11 +725,11 @@ static int32 Z146_SetStat(
 /****************************** Z146_GetStat *********************************/
 /** Get the driver status
  *
- *  The driver supports \ref getstat_setstat_codes "these status codes"
+ *  The driver supports \ref rx_getstat_setstat_codes "these status codes"
  *  in addition to the standard codes (see mdis_api.h).
  *  and clear it than.
  *  \param llHdl             \IN  low-level handle
- *  \param code              \IN  \ref getstat_setstat_codes "status code"
+ *  \param code              \IN  \ref rx_getstat_setstat_codes "status code"
  *  \param ch                \IN  current channel
  *  \param value32_or_64P    \IN  pointer to block data structure (M_SG_BLOCK) for
  *                                block status codes
@@ -1238,7 +1241,7 @@ static int32 Z146_Info(
  */
 static char* Ident(void)
 {
-	return ("Z146 - Z146 low level driver: $Id: z146_drv.c,v 1.1 2015/10/16 18:07:59 ts Exp $"
+	return ("Z146 - Z146 low level driver: $Id: z146_drv.c,v 1.3 2016/11/28 12:59:21 atlbitbucket Exp $"
 			#ifdef Z146_MODEL_Z127
 				" Z127 model"
 			#else

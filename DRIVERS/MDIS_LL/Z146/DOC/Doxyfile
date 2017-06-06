@@ -1,27 +1,14 @@
 @INCLUDE_PATH = $(MEN_DOXYGENTMPL)
 @INCLUDE = DoxyfileCommon
 
-PROJECT_NAME           = "13Z146 MDIS Driver"
+PROJECT_NAME           = "Z146 MDIS Driver Package"
 INPUT                  = \
                     	../DRIVER/COM  \
                     	$(MEN_COM_INC)/MEN/z146_drv.h \
-						$(MEN_COM_INC)/MEN/z246_drv.h \
-						../EXAMPLE/Z146_EXAMPLE/COM/z146_example.c \
-						../TOOLS/TESTS/12KHz_SPEED_TEST/z146_12KHz_test.c \
-						../TOOLS/TESTS/INTERRUPT_TEST/z146_interrupt_test.c \
-						../TOOLS/TESTS/LABEL_TEST/z146_labels_test.c \
-						../TOOLS/TESTS/MSG_SIZE_TEST/z146_msg_size_test.c \
-						../TOOLS/TESTS/PARITY_TEST/z146_parity_test.c \
-						../TOOLS/TESTS/SRC_DST_ID_TEST/z146_src_dst_id_test.c
+                    	$(MEN_COM_INC)/MEN/z246_drv.h
 
 EXAMPLE_RECURSIVE      = YES
-EXAMPLE_PATH           = ../EXAMPLE/Z146_EXAMPLE/COM/z146_example.c \
-						../TOOLS/TESTS/12KHz_SPEED_TEST/z146_12KHz_test.c \
-						../TOOLS/TESTS/INTERRUPT_TEST/z146_interrupt_test.c \
-						../TOOLS/TESTS/LABEL_TEST/z146_labels_test.c \
-						../TOOLS/TESTS/MSG_SIZE_TEST/z146_msg_size_test.c \
-						../TOOLS/TESTS/PARITY_TEST/z146_parity_test.c \
-						../TOOLS/TESTS/SRC_DST_ID_TEST/z146_src_dst_id_test.c
+EXAMPLE_PATH           = ../EXAMPLE/Z146_EXAMPLE/COM
 
 OUTPUT_DIRECTORY       = .
 EXTRACT_ALL            = YES

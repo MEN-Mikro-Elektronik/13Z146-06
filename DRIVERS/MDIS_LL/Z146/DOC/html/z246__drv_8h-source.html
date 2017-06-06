@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>MEN - 13Z146 MDIS Driver - z246_drv.h Source File</title>
+<title>MEN - Z146 MDIS Driver Package - z246_drv.h Source File</title>
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
 <meta name="Language" content="en, english">
 <meta name="Copyright" content="All material copyright MEN Mikro Elektronik GmbH">
@@ -12,7 +12,7 @@
 <div class="left_to_right" style="padding-top: 6px; background-color: #F0F0F0; height: 110px; border-bottom: 2px solid #D1D1D2;">
 	<!-- Titel -->
 	<img src="menlogo.gif" alt="MEN" style="float: left; height: 103px; width: 155px; margin: 0px;"></a>
-	<h1 style="margin: 0px; padding-top: 35px; padding-bottom: 0px;">13Z146 MDIS Driver &nbsp; </h1>
+	<h1 style="margin: 0px; padding-top: 35px; padding-bottom: 0px;">Z146 MDIS Driver Package &nbsp; </h1>
 	<h3>z246_drv.h Source File</h3>
 </div>
 
@@ -25,86 +25,94 @@
 <hr><h1>z246_drv.h</h1><a href="z246__drv_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre>00001 <span class="comment">/***********************  I n c l u d e  -  F i l e  ***********************/</span>
 00016  <span class="comment">/*-------------------------------[ History ]--------------------------------</span>
 00017 <span class="comment"> *</span>
-00018 <span class="comment"> * $Log: z17_drv.h,v $</span>
-00019 <span class="comment"> *</span>
-00020 <span class="comment"> *---------------------------------------------------------------------------</span>
-00021 <span class="comment"> * (c) Copyright 2004 by MEN mikro elektronik GmbH, Nuernberg, Germany</span>
-00022 <span class="comment"> ****************************************************************************/</span>
-00023 
-00024 <span class="preprocessor">#ifndef _Z246_DRV_H</span>
-00025 <span class="preprocessor"></span><span class="preprocessor">#define _Z246_DRV_H</span>
-00026 <span class="preprocessor"></span>
-00027 <span class="preprocessor">#ifdef __cplusplus</span>
-00028 <span class="preprocessor"></span>      <span class="keyword">extern</span> <span class="stringliteral">"C"</span> {
-00029 <span class="preprocessor">#endif</span>
-00030 <span class="preprocessor"></span>
-00031 
-00032 <span class="comment">/*-----------------------------------------+</span>
-00033 <span class="comment">|  TYPEDEFS                                |</span>
-00034 <span class="comment">+-----------------------------------------*/</span>
-00035 <span class="comment">/* structure for the Z246_BLK_IRQLAT_X setstat/getstat */</span>
-<a name="l00036"></a><a class="code" href="structZ246__BLK__IRQLAT.html">00036</a> <span class="keyword">typedef</span> <span class="keyword">struct </span>{
-00037     <span class="comment">/* in */</span>
-<a name="l00038"></a><a class="code" href="structZ246__BLK__IRQLAT.html#m0">00038</a>     u_int32 outPort;    <span class="comment">/* output port (0..31) */</span>
-<a name="l00039"></a><a class="code" href="structZ246__BLK__IRQLAT.html#m1">00039</a>     u_int32 inPort;     <span class="comment">/* input port (0..31) */</span>
-<a name="l00040"></a><a class="code" href="structZ246__BLK__IRQLAT.html#m2">00040</a>     u_int32 irqs2fire;  <span class="comment">/* number of interrupts to fire */</span>
-00041     <span class="comment">/* out */</span>
-<a name="l00042"></a><a class="code" href="structZ246__BLK__IRQLAT.html#m3">00042</a>     u_int32 tickRate;   <span class="comment">/* tick rate from OSS_TickRateGet */</span>
-<a name="l00043"></a><a class="code" href="structZ246__BLK__IRQLAT.html#m4">00043</a>     u_int32 startTick;  <span class="comment">/* start tick count */</span>
-<a name="l00044"></a><a class="code" href="structZ246__BLK__IRQLAT.html#m5">00044</a>     u_int32 stopTick;   <span class="comment">/* stop tick count */</span>   
-<a name="l00045"></a><a class="code" href="structZ246__BLK__IRQLAT.html#m6">00045</a>     u_int32 irqsRcved;  <span class="comment">/* received IRQs */</span>
-00046 } <a class="code" href="structZ246__BLK__IRQLAT.html">Z246_BLK_IRQLAT</a>;
-00047 
-00048 <span class="comment">/*-----------------------------------------+</span>
-00049 <span class="comment">|  DEFINES                                 |</span>
-00050 <span class="comment">+-----------------------------------------*/</span>
-<a name="l00055"></a><a class="code" href="z246__drv_8h.html#a0">00055</a> <span class="preprocessor">#define Z246_SET_SIGNAL          M_DEV_OF+0x01    </span>
-<a name="l00056"></a><a class="code" href="z246__drv_8h.html#a1">00056</a> <span class="preprocessor">#define Z246_CLR_SIGNAL          M_DEV_OF+0x02    </span>
-<a name="l00057"></a><a class="code" href="z246__drv_8h.html#a2">00057</a> <span class="preprocessor">#define Z246_TX_TXCIEN_STAT      M_DEV_OF+0x03    </span>
-<a name="l00058"></a><a class="code" href="z246__drv_8h.html#a3">00058</a> <span class="preprocessor">#define Z246_LOOPBACK            M_DEV_OF+0x04    </span>
-<a name="l00059"></a><a class="code" href="z246__drv_8h.html#a4">00059</a> <span class="preprocessor">#define Z246_TX_SPEED            M_DEV_OF+0x05    </span>
-<a name="l00060"></a><a class="code" href="z246__drv_8h.html#a5">00060</a> <span class="preprocessor">#define Z246_PAR_EN              M_DEV_OF+0x06    </span>
-<a name="l00061"></a><a class="code" href="z246__drv_8h.html#a6">00061</a> <span class="preprocessor">#define Z246_PAR_TYPE            M_DEV_OF+0x07    </span>
-<a name="l00062"></a><a class="code" href="z246__drv_8h.html#a7">00062</a> <span class="preprocessor">#define Z246_SDI_EN              M_DEV_OF+0x08    </span>
-<a name="l00063"></a><a class="code" href="z246__drv_8h.html#a8">00063</a> <span class="preprocessor">#define Z246_SDI                 M_DEV_OF+0x09    </span>
-<a name="l00064"></a><a class="code" href="z246__drv_8h.html#a9">00064</a> <span class="preprocessor">#define Z246_TX_THR_LEV          M_DEV_OF+0x0A    </span>
-<a name="l00065"></a><a class="code" href="z246__drv_8h.html#a10">00065</a> <span class="preprocessor">#define Z246_TX_LABEL            M_DEV_OF+0x0B    </span>
-<a name="l00070"></a><a class="code" href="z246__drv_8h.html#a11">00070</a> <span class="preprocessor">#define _Z246_GLOBNAME(var,name) var##_##name</span>
-00071 <span class="preprocessor"></span>
-00072 <span class="preprocessor">#ifndef _ONE_NAMESPACE_PER_DRIVER_</span>
-<a name="l00073"></a><a class="code" href="z246__drv_8h.html#a12">00073</a> <span class="preprocessor"></span><span class="preprocessor">  #define Z246_GLOBNAME(var,name)    _Z246_GLOBNAME(var,name)</span>
-00074 <span class="preprocessor"></span><span class="preprocessor">#else</span>
-00075 <span class="preprocessor"></span><span class="preprocessor">  #define Z246_GLOBNAME(var,name)    _Z246_GLOBNAME(Z246,name)</span>
-00076 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+00018 <span class="comment"> * $Log: z246_drv.h,v $</span>
+00019 <span class="comment"> * Revision 3.4  2016/04/27 15:10:19  atlbitbucket</span>
+00020 <span class="comment"> * Stash autocheckin</span>
+00021 <span class="comment"> *</span>
+00022 <span class="comment"> * Revision 3.1  2015/10/17 15:09:13  ts</span>
+00023 <span class="comment"> * Initial Revision</span>
+00024 <span class="comment"> *</span>
+00025 <span class="comment"> *</span>
+00026 <span class="comment"> *---------------------------------------------------------------------------</span>
+00027 <span class="comment"> * (c) Copyright 2004 by MEN mikro elektronik GmbH, Nuernberg, Germany</span>
+00028 <span class="comment"> ****************************************************************************/</span>
+00029 
+00030 <span class="preprocessor">#ifndef _Z246_DRV_H</span>
+00031 <span class="preprocessor"></span><span class="preprocessor">#define _Z246_DRV_H</span>
+00032 <span class="preprocessor"></span>
+00033 <span class="preprocessor">#ifdef __cplusplus</span>
+00034 <span class="preprocessor"></span>      <span class="keyword">extern</span> <span class="stringliteral">"C"</span> {
+00035 <span class="preprocessor">#endif</span>
+00036 <span class="preprocessor"></span>
+00037 
+00038 <span class="comment">/*-----------------------------------------+</span>
+00039 <span class="comment">|  TYPEDEFS                                |</span>
+00040 <span class="comment">+-----------------------------------------*/</span>
+00041 <span class="comment">/* structure for the Z246_BLK_IRQLAT_X setstat/getstat */</span>
+<a name="l00042"></a><a class="code" href="structZ246__BLK__IRQLAT.html">00042</a> <span class="keyword">typedef</span> <span class="keyword">struct </span>{
+00043     <span class="comment">/* in */</span>
+<a name="l00044"></a><a class="code" href="structZ246__BLK__IRQLAT.html#m0">00044</a>     u_int32 outPort;    <span class="comment">/* output port (0..31) */</span>
+<a name="l00045"></a><a class="code" href="structZ246__BLK__IRQLAT.html#m1">00045</a>     u_int32 inPort;     <span class="comment">/* input port (0..31) */</span>
+<a name="l00046"></a><a class="code" href="structZ246__BLK__IRQLAT.html#m2">00046</a>     u_int32 irqs2fire;  <span class="comment">/* number of interrupts to fire */</span>
+00047     <span class="comment">/* out */</span>
+<a name="l00048"></a><a class="code" href="structZ246__BLK__IRQLAT.html#m3">00048</a>     u_int32 tickRate;   <span class="comment">/* tick rate from OSS_TickRateGet */</span>
+<a name="l00049"></a><a class="code" href="structZ246__BLK__IRQLAT.html#m4">00049</a>     u_int32 startTick;  <span class="comment">/* start tick count */</span>
+<a name="l00050"></a><a class="code" href="structZ246__BLK__IRQLAT.html#m5">00050</a>     u_int32 stopTick;   <span class="comment">/* stop tick count */</span>   
+<a name="l00051"></a><a class="code" href="structZ246__BLK__IRQLAT.html#m6">00051</a>     u_int32 irqsRcved;  <span class="comment">/* received IRQs */</span>
+00052 } <a class="code" href="structZ246__BLK__IRQLAT.html">Z246_BLK_IRQLAT</a>;
+00053 
+00054 <span class="comment">/*-----------------------------------------+</span>
+00055 <span class="comment">|  DEFINES                                 |</span>
+00056 <span class="comment">+-----------------------------------------*/</span>
+<a name="l00061"></a><a class="code" href="z246__drv_8h.html#a0">00061</a> <span class="preprocessor">#define Z246_SET_SIGNAL          M_DEV_OF+0x01    </span>
+<a name="l00062"></a><a class="code" href="z246__drv_8h.html#a1">00062</a> <span class="preprocessor">#define Z246_CLR_SIGNAL          M_DEV_OF+0x02    </span>
+<a name="l00063"></a><a class="code" href="z246__drv_8h.html#a2">00063</a> <span class="preprocessor">#define Z246_TX_TXCIEN_STAT      M_DEV_OF+0x03    </span>
+<a name="l00064"></a><a class="code" href="z246__drv_8h.html#a3">00064</a> <span class="preprocessor">#define Z246_LOOPBACK            M_DEV_OF+0x04    </span>
+<a name="l00065"></a><a class="code" href="z246__drv_8h.html#a4">00065</a> <span class="preprocessor">#define Z246_TX_SPEED            M_DEV_OF+0x05    </span>
+<a name="l00066"></a><a class="code" href="z246__drv_8h.html#a5">00066</a> <span class="preprocessor">#define Z246_PAR_EN              M_DEV_OF+0x06    </span>
+<a name="l00067"></a><a class="code" href="z246__drv_8h.html#a6">00067</a> <span class="preprocessor">#define Z246_PAR_TYPE            M_DEV_OF+0x07    </span>
+<a name="l00068"></a><a class="code" href="z246__drv_8h.html#a7">00068</a> <span class="preprocessor">#define Z246_SDI_EN              M_DEV_OF+0x08    </span>
+<a name="l00069"></a><a class="code" href="z246__drv_8h.html#a8">00069</a> <span class="preprocessor">#define Z246_SDI                 M_DEV_OF+0x09    </span>
+<a name="l00070"></a><a class="code" href="z246__drv_8h.html#a9">00070</a> <span class="preprocessor">#define Z246_TX_THR_LEV          M_DEV_OF+0x0A    </span>
+<a name="l00071"></a><a class="code" href="z246__drv_8h.html#a10">00071</a> <span class="preprocessor">#define Z246_TX_LABEL            M_DEV_OF+0x0B    </span>
+<a name="l00076"></a><a class="code" href="z246__drv_8h.html#a11">00076</a> <span class="preprocessor">#define _Z246_GLOBNAME(var,name) var##_##name</span>
 00077 <span class="preprocessor"></span>
-<a name="l00078"></a><a class="code" href="z246__drv_8h.html#a13">00078</a> <span class="preprocessor">#define __Z246_GetEntry    Z246_GLOBNAME(Z246_VARIANT, GetEntry)</span>
-00079 <span class="preprocessor"></span>
-00080 <span class="comment">/*-----------------------------------------+</span>
-00081 <span class="comment">|  PROTOTYPES                              |</span>
-00082 <span class="comment">+-----------------------------------------*/</span>
-00083 <span class="preprocessor">#ifdef _LL_DRV_</span>
-00084 <span class="preprocessor"></span><span class="preprocessor">#ifndef _ONE_NAMESPACE_PER_DRIVER_</span>
-00085 <span class="preprocessor"></span>    <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="z246__drv_8h.html#a13">__Z246_GetEntry</a>(LL_ENTRY* drvP);
-00086 <span class="preprocessor">#endif</span>
-00087 <span class="preprocessor"></span><span class="preprocessor">#endif </span><span class="comment">/* _LL_DRV_ */</span>
-00088 
-00089 <span class="comment">/*-----------------------------------------+</span>
-00090 <span class="comment">|  BACKWARD COMPATIBILITY TO MDIS4         |</span>
-00091 <span class="comment">+-----------------------------------------*/</span>
-00092 <span class="preprocessor">#ifndef U_INT32_OR_64</span>
-00093 <span class="preprocessor"></span>  <span class="comment">/* we have an MDIS4 men_types.h and mdis_api.h included */</span>
-00094   <span class="comment">/* only 32bit compatibility needed!                     */</span>
-<a name="l00095"></a><a class="code" href="z246__drv_8h.html#a14">00095</a> <span class="preprocessor">  #define INT32_OR_64    int32</span>
-<a name="l00096"></a><a class="code" href="z246__drv_8h.html#a15">00096</a> <span class="preprocessor"></span><span class="preprocessor">  #define U_INT32_OR_64  u_int32</span>
-<a name="l00097"></a><a class="code" href="z246__drv_8h.html#a16">00097</a> <span class="preprocessor"></span>  <span class="keyword">typedef</span> <a class="code" href="z146__drv_8h.html#a21">INT32_OR_64</a>    <a class="code" href="z146__drv_8h.html#a23">MDIS_PATH</a>;
-00098 <span class="preprocessor">#endif </span><span class="comment">/* U_INT32_OR_64 */</span>
-00099 
-00100 <span class="preprocessor">#ifdef __cplusplus</span>
-00101 <span class="preprocessor"></span>      }
-00102 <span class="preprocessor">#endif</span>
-00103 <span class="preprocessor"></span>
-00104 <span class="preprocessor">#endif </span><span class="comment">/* _Z246_DRV_H */</span>
+00078 <span class="preprocessor">#ifndef _ONE_NAMESPACE_PER_DRIVER_</span>
+<a name="l00079"></a><a class="code" href="z246__drv_8h.html#a12">00079</a> <span class="preprocessor"></span><span class="preprocessor">  #define Z246_GLOBNAME(var,name)    _Z246_GLOBNAME(var,name)</span>
+00080 <span class="preprocessor"></span><span class="preprocessor">#else</span>
+00081 <span class="preprocessor"></span><span class="preprocessor">  #define Z246_GLOBNAME(var,name)    _Z246_GLOBNAME(Z246,name)</span>
+00082 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+00083 <span class="preprocessor"></span>
+<a name="l00084"></a><a class="code" href="z246__drv_8h.html#a13">00084</a> <span class="preprocessor">#define __Z246_GetEntry    Z246_GLOBNAME(Z246_VARIANT, GetEntry)</span>
+00085 <span class="preprocessor"></span>
+00086 <span class="comment">/*-----------------------------------------+</span>
+00087 <span class="comment">|  PROTOTYPES                              |</span>
+00088 <span class="comment">+-----------------------------------------*/</span>
+00089 <span class="preprocessor">#ifdef _LL_DRV_</span>
+00090 <span class="preprocessor"></span><span class="preprocessor">#ifndef _ONE_NAMESPACE_PER_DRIVER_</span>
+00091 <span class="preprocessor"></span>    <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="z246__drv_8h.html#a13">__Z246_GetEntry</a>(LL_ENTRY* drvP);
+00092 <span class="preprocessor">#endif</span>
+00093 <span class="preprocessor"></span><span class="preprocessor">#endif </span><span class="comment">/* _LL_DRV_ */</span>
+00094 
+00095 <span class="comment">/*-----------------------------------------+</span>
+00096 <span class="comment">|  BACKWARD COMPATIBILITY TO MDIS4         |</span>
+00097 <span class="comment">+-----------------------------------------*/</span>
+00098 <span class="preprocessor">#ifndef U_INT32_OR_64</span>
+00099 <span class="preprocessor"></span>  <span class="comment">/* we have an MDIS4 men_types.h and mdis_api.h included */</span>
+00100   <span class="comment">/* only 32bit compatibility needed!                     */</span>
+<a name="l00101"></a><a class="code" href="z246__drv_8h.html#a14">00101</a> <span class="preprocessor">  #define INT32_OR_64    int32</span>
+<a name="l00102"></a><a class="code" href="z246__drv_8h.html#a15">00102</a> <span class="preprocessor"></span><span class="preprocessor">  #define U_INT32_OR_64  u_int32</span>
+<a name="l00103"></a><a class="code" href="z246__drv_8h.html#a16">00103</a> <span class="preprocessor"></span>  <span class="keyword">typedef</span> <a class="code" href="z146__drv_8h.html#a21">INT32_OR_64</a>    <a class="code" href="z146__drv_8h.html#a23">MDIS_PATH</a>;
+00104 <span class="preprocessor">#endif </span><span class="comment">/* U_INT32_OR_64 */</span>
 00105 
+00106 <span class="preprocessor">#ifdef __cplusplus</span>
+00107 <span class="preprocessor"></span>      }
+00108 <span class="preprocessor">#endif</span>
+00109 <span class="preprocessor"></span>
+00110 <span class="preprocessor">#endif </span><span class="comment">/* _Z246_DRV_H */</span>
+00111 
+00112  
+00113  
 </pre></div>
 	</div>
 </div>
@@ -112,8 +120,8 @@
 <div class="footer">
 <!-- Footer -->
 	<p class="footer">
-	Generated for 13Z146 MDIS Driver using <a href="http://www.doxygen.org">doxygen</a>.<br>
-	Copyright &copy; 2015 <a href="http://www.men.de">MEN Mikro Elektronik GmbH</a>. All Rights Reserved.
+	Generated for Z146 MDIS Driver Package using <a href="http://www.doxygen.org">doxygen</a>.<br>
+	Copyright &copy; 2017 <a href="http://www.men.de">MEN Mikro Elektronik GmbH</a>. All Rights Reserved.
 	</p>
 </div>
 

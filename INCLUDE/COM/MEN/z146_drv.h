@@ -3,8 +3,8 @@
  *        \file  z146_drv.h
  *
  *      \author  APatil
- *        $Date: 2015/10/17 15:09:12 $
- *    $Revision: 3.1 $
+ *        $Date: 2016/04/27 15:10:17 $
+ *    $Revision: 3.4 $
  *
  *       \brief  Header file for Z146 driver containing
  *               Z146 specific status codes and
@@ -16,6 +16,9 @@
  /*-------------------------------[ History ]--------------------------------
  *
  * $Log: z146_drv.h,v $
+ * Revision 3.4  2016/04/27 15:10:17  atlbitbucket
+ * Stash autocheckin
+ *
  * Revision 3.1  2015/10/17 15:09:12  ts
  * Initial Revision
  *
@@ -41,7 +44,7 @@
 |  DEFINES                                 |
 +-----------------------------------------*/
 /** \name Z146 specific Getstat/Setstat standard codes
- *  \anchor getstat_setstat_codes
+ *  \anchor rx_getstat_setstat_codes
  */
 /**@{*/
 #define Z146_DIRECTION           M_DEV_OF+0x01    /**< G,S: Get/Set direction of all ports - 8bit - bit 0 for gpio[0] - value 0 is in - 1 is out  */

@@ -3,8 +3,8 @@
  *        \file  z246_drv.h
  *
  *      \author  APatil
- *        $Date: 2015/10/17 15:09:13 $
- *    $Revision: 3.1 $
+ *        $Date: 2016/04/27 15:10:19 $
+ *    $Revision: 3.4 $
  *
  *       \brief  Header file for Z246 driver containing
  *               Z246 specific status codes and
@@ -16,6 +16,9 @@
  /*-------------------------------[ History ]--------------------------------
  *
  * $Log: z246_drv.h,v $
+ * Revision 3.4  2016/04/27 15:10:19  atlbitbucket
+ * Stash autocheckin
+ *
  * Revision 3.1  2015/10/17 15:09:13  ts
  * Initial Revision
  *
@@ -52,7 +55,7 @@ typedef struct {
 |  DEFINES                                 |
 +-----------------------------------------*/
 /** \name Z246 specific Getstat/Setstat standard codes
- *  \anchor getstat_setstat_codes
+ *  \anchor tx_getstat_setstat_codes
  */
 /**@{*/
 #define Z246_SET_SIGNAL          M_DEV_OF+0x01    /**<   S: Set signal sent on IRQ  */

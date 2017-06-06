@@ -3,8 +3,8 @@
  *        \file  z246_drv.c
  *
  *      \author  APatil
- *        $Date: 2015/10/16 18:08:00 $
- *    $Revision: 1.1 $
+ *        $Date: 2015/11/08 19:47:19 $
+ *    $Revision: 1.2 $
  *
  *      \brief   Low-level driver for ARINC429 transmitter
  *
@@ -15,6 +15,9 @@
 /*-------------------------------[ History ]--------------------------------
  *
  * $Log: z246_drv.c,v $
+ * Revision 1.2  2015/11/08 19:47:19  atlstash
+ * Stash autocheckin
+ *
  * Revision 1.1  2015/10/16 18:08:00  ts
  * Initial Revision
  *
@@ -376,12 +379,12 @@ static int32 Z246_Write(
 /****************************** Z246_SetStat *********************************/
 /** Set the driver status
  *
- *  The driver supports \ref getstat_setstat_codes "these status codes"
+ *  The driver supports \ref tx_getstat_setstat_codes "these status codes"
  *  in addition to the standard codes (see mdis_api.h).
  *  Note: only inputs are able fire an interrupt
  *
  *  \param llHdl         \IN  low-level handle
- *  \param code          \IN  \ref getstat_setstat_codes "status code"
+ *  \param code          \IN  \ref tx_getstat_setstat_codes "status code"
  *  \param ch            \IN  current channel
  *  \param value32_or_64 \IN  data or pointer to block data structure
  *                            (M_SG_BLOCK) for block status codes
@@ -570,10 +573,10 @@ static int32 Z246_SetStat(
 /****************************** Z246_GetStat *********************************/
 /** Get the driver status
  *
- *  The driver supports \ref getstat_setstat_codes "these status codes"
+ *  The driver supports \ref tx_getstat_setstat_codes "these status codes"
  *  in addition to the standard codes (see mdis_api.h).
  *  \param llHdl             \IN  low-level handle
- *  \param code              \IN  \ref getstat_setstat_codes "status code"
+ *  \param code              \IN  \ref tx_getstat_setstat_codes "status code"
  *  \param ch                \IN  current channel
  *  \param value32_or_64P    \IN  pointer to block data structure (M_SG_BLOCK) for
  *                                block status codes
@@ -987,7 +990,7 @@ static int32 Z246_Info(
  */
 static char* Ident(void)
 {
-	return ("Z246 - Z246 low level driver: $Id: z246_drv.c,v 1.1 2015/10/16 18:08:00 ts Exp $"
+	return ("Z246 - Z246 low level driver: $Id: z246_drv.c,v 1.2 2015/11/08 19:47:19 atlstash Exp $"
 	);
 }
 
@@ -1221,5 +1224,4 @@ void RegStatus(LL_HANDLE *llHdl ){
 	DBGWRT_1((DBH, " >>  LL - Z246_drv status: LA = 0x%x\n", MREAD_D8(llHdl->ma, Z246_TX_LA_OFFSET)));
 	DBGWRT_1((DBH, " \n"));
 }
- 
  
