@@ -77,6 +77,7 @@ int main(int argc, char *argv[])
 
 	rxDevice = argv[1];
 	txDevice = argv[2];
+	
 	/*--------------------+
     |  open               |
     +--------------------*/
