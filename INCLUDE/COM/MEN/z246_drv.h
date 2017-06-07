@@ -34,23 +34,6 @@
       extern "C" {
 #endif
 
-
-/*-----------------------------------------+
-|  TYPEDEFS                                |
-+-----------------------------------------*/
-/* structure for the Z246_BLK_IRQLAT_X setstat/getstat */
-typedef struct {
-	/* in */
-	u_int32 outPort;    /* output port (0..31) */
-	u_int32 inPort;     /* input port (0..31) */
-	u_int32 irqs2fire;  /* number of interrupts to fire */
-	/* out */
-	u_int32 tickRate;   /* tick rate from OSS_TickRateGet */
-	u_int32 startTick;  /* start tick count */
-	u_int32 stopTick;   /* stop tick count */	
-	u_int32 irqsRcved;  /* received IRQs */
-} Z246_BLK_IRQLAT;
-
 /*-----------------------------------------+
 |  DEFINES                                 |
 +-----------------------------------------*/

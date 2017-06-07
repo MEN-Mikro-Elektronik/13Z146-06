@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
 	rxDevice = argv[1];
 	txDevice = argv[2];
 	/*--------------------+
-    |  open rxPath        |
+    |  open               |
     +--------------------*/
 	if ((rxPath = M_open(rxDevice)) < 0) {
 		PrintError("rx open");
@@ -119,8 +119,6 @@ int main(int argc, char *argv[])
 	UOS_Delay(3000);
 
 	result = M_getblock( rxPath, (u_int8*)rxDataArray, (dataLen * 4));
-
-	/* program lower five ports as outputs, others as inputs */
 	if(result > 0){
 		printf("############# Receive ###############\n");
 		printf("Receiving = %ld bytes data\n", result);

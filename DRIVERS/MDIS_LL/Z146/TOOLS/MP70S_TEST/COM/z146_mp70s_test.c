@@ -86,7 +86,7 @@ int main(int argc, char *argv[])
 	}
 
 	/*--------------------+
-	|  open rxPath(s)     |
+	|  open               |
 	+--------------------*/
 	if ((rxPath1 = M_open(rxDevice1)) < 0) {
 		PrintError("open");
@@ -151,8 +151,6 @@ int main(int argc, char *argv[])
 	UOS_Delay(1000);
 
 	result = M_getblock( rxPath1, (u_int8*)rxDataArray, (dataLen * 4)); 
-
-	/* program lower five ports as outputs, others as inputs */
 	if(result > 0){
 		printf("############# Receive-1 ###############\n");
 		printf("Receiving = %ld bytes data\n", result);
@@ -178,8 +176,6 @@ int main(int argc, char *argv[])
 
 	if (rxDevice2 != NULL) {
 		result = M_getblock( rxPath2, (u_int8*)rxDataArray, (dataLen * 4)); 
-
-		/* program lower five ports as outputs, others as inputs */
 		if(result > 0){
 			printf("############# Receive-2 ###############\n");
 			printf("Receiving = %ld bytes data\n", result);
@@ -206,8 +202,6 @@ int main(int argc, char *argv[])
 
 	if (rxDevice3 != NULL) {
 		result = M_getblock( rxPath3, (u_int8*)rxDataArray, (dataLen * 4)); 
-
-		/* program lower five ports as outputs, others as inputs */
 		if(result > 0){
 			printf("############# Receive-3 ###############\n");
 			printf("Receiving = %ld bytes data\n", result);
@@ -234,8 +228,6 @@ int main(int argc, char *argv[])
 
 	if (rxDevice4 != NULL) {
 		result = M_getblock( rxPath4, (u_int8*)rxDataArray, (dataLen * 4)); 
-
-		/* program lower five ports as outputs, others as inputs */
 		if(result > 0){
 			printf("############# Receive-4 ###############\n");
 			printf("Receiving = %ld bytes data\n", result);

@@ -369,7 +369,7 @@ static int32 Z146_Exit(
 /****************************** Z146_Read ************************************/
 /** Read a value from the device
  *
- *  The function is not supported
+ *  The function is not supported and always returns an ERR_LL_ILL_FUNC error.
  *
  *  \param llHdl      \IN  low-level handle
  *  \param ch         \IN  current channel
@@ -391,7 +391,7 @@ static int32 Z146_Read(
 /****************************** Z146_Write ***********************************/
 /** Description:  Write a value to the device
  *
- *  The function is not supported
+ *  The function is not supported and always returns an ERR_LL_ILL_FUNC error.
  *
  *  \param llHdl      \IN  low-level handle
  *  \param ch         \IN  current channel
@@ -995,7 +995,9 @@ static int32 Z146_BlockRead(
 }
 
 /****************************** Z146_BlockWrite *****************************/
-/** Write a data block from the device. (Not supported)
+/** Write a data block from the device.
+ *
+ *  The function is not supported and always returns an ERR_LL_ILL_FUNC error. 
  *
  *  \param llHdl  	   \IN  low-level handle
  *  \param ch          \IN  current channel

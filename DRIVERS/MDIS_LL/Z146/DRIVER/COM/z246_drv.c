@@ -333,9 +333,9 @@ static int32 Z246_Exit(
 }
 
 /****************************** Z246_Read ************************************/
-/** Read a value from the device. (Not supported)
+/** Read a value from the device.
  *
- *  The function reads the current state of all port pins.
+ *  The function is not supported and always returns an ERR_LL_ILL_FUNC error.
  *
  *  \param llHdl      \IN  low-level handle
  *  \param ch         \IN  current channel
@@ -355,9 +355,9 @@ static int32 Z246_Read(
 }
 
 /****************************** Z246_Write ***********************************/
-/** Description:  Write a value to the device (Not supported)
+/** Description:  Write a value to the device
  *
- *  The function writes a value to the ports which are programmed as outputs.
+ *  The function is not supported and always returns an ERR_LL_ILL_FUNC error.
  *
  *  \param llHdl      \IN  low-level handle
  *  \param ch         \IN  current channel
@@ -726,6 +726,8 @@ static int32 Z246_GetStat(
 /******************************* Z246_BlockRead ******************************/
 /** Read a data block from the device
  *
+ *  The function is not supported and always returns an ERR_LL_ILL_FUNC error.
+ * 
  *  \param llHdl       \IN  low-level handle
  *  \param ch          \IN  current channel
  *  \param buf         \IN  data buffer
@@ -793,7 +795,7 @@ static int32 Z246_BlockWrite(
 				if(HwWrite(llHdl) == 0){
 					/* Write operation successful */
 					result = ERR_SUCCESS;
-				}// Else return the result.
+				} /* Else return the result */
 			}
 		}else{
 			result = ERR_MBUF_OVERFLOW;
@@ -1117,7 +1119,7 @@ int HwWrite(LL_HANDLE    *llHdl){
 		else{
 			dataBitMask = Z246_21_BIT_MASK;
 		}
-		// Need to add support for user buffer tx.
+		/* Need to add support for user buffer tx */
 		for(i=0;i<dataCount;i++){
 			data = ReadFromBuffer(llHdl, &ringResult);
 			if(ringResult != 0){
@@ -1126,7 +1128,7 @@ int HwWrite(LL_HANDLE    *llHdl){
 			MWRITE_D32(llHdl->ma, Z246_FIFO_START_ADDR + (i*4), (dataBitMask & data));
 			DBGWRT_2((DBH, "LL - Z246_Write: Tx Data[%d] = 0x%x\n",i, (dataBitMask & data)));
 		}
-	} // Else dataCount < len so it will land in if(dataCount < len) condition.
+	} /* Else dataCount < len so it will land in if(dataCount < len) condition */
 
 	/* If data is remaining then enable the queue space interrupt. */
 	if(llHdl->ringDataCnt != 0){
